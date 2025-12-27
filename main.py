@@ -36,3 +36,37 @@ def DiscRegister():
     Save(dados)
     print("Disco catalogado com sucesso.")
 
+def List():
+    dados = Load()
+    if not dados:
+        print("Nenhum disco cadastrado")
+        return
+    
+
+    for index, disco in enumerate(dados):
+        print(f"\n[{index}]")
+        print(f"Nome: {disco['nome']}")
+        print(f"Autor: {disco['autor']}")
+        print(f"Ano de Lançamento: {disco['ano']}")
+        print(f"Crítica: {disco['critica']}")
+
+def Edit():
+    dados = Load()
+    List()
+
+    index = int(input("Digite o indice do disco que deseja editar: "))
+
+    if index < 0 or index >= len(dados):
+        print("indice inválido")
+        return
+    
+    disco = dados[index]
+
+    disco['nome'] = input("Nome: ")
+    disco['autor'] = input("Autor: ")
+    disco['ano'] = int(input("Ano de lançamento: "))
+    disco['critica'] = input("Crítica: ")
+
+    Save(dados)
+
+
