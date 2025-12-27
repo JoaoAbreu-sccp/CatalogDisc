@@ -1,0 +1,30 @@
+[
+     {
+          "nome": "Razorblade Romance",
+          "autor": "HIM",
+          "ano": 1999,
+          "nota": "★★★★☆",
+          "critica": "Banda criadora do Love Metal, gênero que o HIM consolidou ao misturar metal/gothic rock com melodias pop e forte apelo emocional. O som é melódico, denso e acessível, com guitarras distorcidas porém limpas, refrões marcantes e clima romântico-sombrio."
+     },
+     {
+          "nome": "Recreio",
+          "autor": "Lupe de Lupe",
+          "ano": 2011,
+          "nota": "★★★★★",
+          "critica": "Obra prima do Shoegaze nacional, O som é cru, ruidoso e emocional, priorizando textura, intensidade e sensação de urgência em vez de acabamento técnico."
+     },
+     {
+          "nome": "Floral Green",
+          "autor": "Title Fight",
+          "ano": 2012,
+          "nota": "★★★★☆",
+          "critica": "Grande nome do emo e post hardcore, Os vocais variam entre gritos rasgados e melodias contidas, transmitindo vulnerabilidade e intensidade emocional. As guitarras são densas e texturais, com riffs simples porém marcantes, enquanto a produção é limpa sem perder peso."
+     },
+     {
+          "nome": "Magia",
+          "autor": "Budang",
+          "ano": 2025,
+          "nota": "★★★★★",
+          "critica": "Futuro do hardcore nacional, vocais são gritados, diretos e cheios de identidade regional, soando quase como fala cuspida. As letras abordam cotidiano urbano, trabalho, frustração e crítica social, muitas vezes com humor ácido. A produção é crua e visceral, reforçando a estética underground e a personalidade forte do Budang."
+     }
+]
