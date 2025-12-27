@@ -69,4 +69,16 @@ def Edit():
 
     Save(dados)
 
+def Delete():
+    dados = Load()
+    List()
 
+    index = int(input("Digite o indice do disco que deseja editar: "))
+
+    if index < 0 or index >= len(dados):
+        print("indice inválido")
+        return
+    
+    dados.pop(index)
+    Save(dados)
+    print("Disco Excluído com sucesso.")
