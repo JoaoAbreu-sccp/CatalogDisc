@@ -2,6 +2,9 @@ import json, os
 
 ARQ = "discos.json"
 
+def clear():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
 def load():
     if not os.path.exists(ARQ):
         with open(ARQ, "w", encoding="utf-8") as f:
