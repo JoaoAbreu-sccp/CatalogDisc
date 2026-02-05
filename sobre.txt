@@ -1,0 +1,5 @@
+O tema escolhido para o desenvolvimento do CRUD foi a catalogação de discos musicais, permitindo organizar informações sobre álbuns de forma simples e estruturada. A escolha desse tema se deu pela minha afinidade com música.
+
+O sistema desenvolvido possibilita cadastrar, listar, buscar, editar e excluir discos, armazenando dados como nome do álbum, artista ou banda, ano de lançamento, nota e crítica. As informações são salvas em um arquivo JSON, funcionando como um banco de dados simples.
+
+O CRUD foi aplicado por meio das quatro operações fundamentais: Create, responsável pelo cadastro de novos discos; Read, que permite a listagem e a busca de discos pelo ID; Update, utilizada para editar os dados de um disco já existente; e Delete, que realiza a exclusão de registros.
