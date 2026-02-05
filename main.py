@@ -1,4 +1,5 @@
 import json, os
+from time import sleep
 
 ARQ = "discos.json"
 
@@ -22,23 +23,48 @@ def NextID(dados):
         return 0
     return max(disco['id'] for disco in dados) + 1
 
-
 def DiscRegister():
     dados = Load()
+    while True:
+        nome = input("Nome do disco: ").strip()
+        if nome:
+            break
+        print("Nome é obrigatório.")
 
-    nome = input("Nome do disco: ")
-    autor = input("Artista/Banda: ")
-    ano = int(input("Ano de lançamento: "))
-    nota = int(input("Quantas estrelas deseja dar[0 a 5]: "))
+    while True:
+        autor = input("Artista/Banda: ").strip()
+        if autor:
+            break
+        print("Artista/Banda é obrigatório")
+        
+    while True:
+        try:
+            ano = int(input("Ano de lançamento: "))
+            if ano < 1800 or ano > 2100:
+                print("Ano inválido.")
+                continue
+            break
+        except ValueError:
+            print("Digite um ano válido.")
 
-    if nota < 0 or nota > 5:
-        print("nota inválida!")
-        return
+    while True:
+        try:
+            nota = int(input("Nota [0 a 5]: "))
+            if 0 <= nota <= 5:
+                break
+            print("Nota deve estar entre 0 e 5.")
+        except ValueError:
+            print("Digite um número.")
 
     nota = "★" * nota + "☆" * (5 - nota)
 
     print("Digite abaixo a sua critica:")
-    critica = input("-> ")
+    while True:
+        critica = input("-> ").strip()
+        if critica:
+            break
+        print("Crítica é obrigatória.")
+
 
     disco = {
         'id': NextID(dados),
@@ -80,29 +106,60 @@ def Edit():
     List()
 
     try:
-        id_busca = int(input("\nDigite o ID do disco que deseja editar[Enter para voltar]: "))
-    except (ValueError):
+        id_busca = int(input("\nDigite o ID do disco que deseja editar [Enter para voltar]: "))
+    except ValueError:
         return
+
     index, disco = FindID(dados, id_busca)
 
     if disco is None:
         print("ID não encontrado")
         return
 
-    disco['nome'] = input("Nome: ")
-    disco['autor'] = input("Autor: ")
-    disco['ano'] = int(input("Ano de lançamento: "))
+    while True:
+        nome = input("Nome: ").strip()
+        if nome:
+            disco['nome'] = nome
+            break
+        print("Nome é obrigatório.")
 
-    nota = int(input("Quantas estrelas deseja dar[0 a 5]: "))
-    if nota < 0 or nota > 5:
-        print("nota inválida!")
-        return
+    while True:
+        autor = input("Autor: ").strip()
+        if autor:
+            disco['autor'] = autor
+            break
+        print("Autor é obrigatório.")
 
-    disco['nota'] = "★" * nota + "☆" * (5 - nota)
-    disco['critica'] = input("Crítica: ")
+    while True:
+        try:
+            ano = int(input("Ano de lançamento: "))
+            if 1800 <= ano <= 2100:
+                disco['ano'] = ano
+                break
+            print("Ano inválido.")
+        except ValueError:
+            print("Digite um ano válido.")
+
+    while True:
+        try:
+            nota = int(input("Quantas estrelas [0 a 5]: "))
+            if 0 <= nota <= 5:
+                disco['nota'] = "★" * nota + "☆" * (5 - nota)
+                break
+            print("Nota deve estar entre 0 e 5.")
+        except ValueError:
+            print("Digite um número.")
+
+    while True:
+        critica = input("Crítica: ").strip()
+        if critica:
+            disco['critica'] = critica
+            break
+        print("Crítica é obrigatória.")
 
     Save(dados)
     print("Disco editado com sucesso.")
+
 
 
 def Delete():
@@ -110,7 +167,7 @@ def Delete():
     List()
 
     try:
-        id_busca = int(input("Digite o ID do disco: "))
+        id_busca = int(input("Digite o ID do disco[Enter para voltar]: "))
     except ValueError:
         return
     index, disco = FindID(dados, id_busca)
@@ -156,7 +213,10 @@ while True:
 [4] Editar disco
 [5] Excluir disco
 [0] Sair''')
-    opc = int(input("opc= "))
+    try:
+        opc = int(input("opc= "))
+    except ValueError:
+        continue
     if opc == 1:
         clear()
         List()
@@ -171,9 +231,11 @@ while True:
     elif opc == 4:
         clear()
         Edit()
+        sleep(1)
     elif opc == 5:
         clear()
         Delete()
+        sleep(1)
     elif opc == 0:
         break
     else:
